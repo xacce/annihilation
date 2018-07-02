@@ -1,0 +1,59 @@
+sources:
+  habr:
+    class: annihilation.sources.rss.Rss
+    url: https://habr.com/rss/hubs/all/
+
+destinations:
+  to_json:
+    class: annihilation.destinations.to_json.ToJson
+
+decomposers:
+  tags:
+    mapper: annihilation.mappers.simple.Assoc
+    source: habr.entries.*.tags.*
+    destination:
+      to_json:
+        path: /tmp/tags.json
+        unique_field: name
+
+    mapping:
+      name: term
+      slug:
+        from: term
+        tuners:
+          - slugify
+  authors:
+    mapper: annihilation.mappers.simple.Assoc
+    source: habr.entries.*.authors.*
+    destination:
+      to_json:
+        path: /tmp/authors.json
+        unique_field: username
+
+    mapping:
+      username: name
+
+  entries:
+    using:
+      - tags
+      - authors
+    mapper: annihilation.mappers.simple.Assoc
+    source: habr.entries.*
+    destination:
+      to_json:
+        path: /tmp/entries.json
+        unique_field: extra_id
+
+    mapping:
+      title: title
+      published: published
+      content: summary_detail.value # or summary
+      extra_id: id
+      tags:
+        using: tags
+        query: tags.*.term
+        setter: m2m
+      authors:
+        using: authors
+        query: authors.*.name
+        setter: m2m
