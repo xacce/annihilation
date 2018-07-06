@@ -125,28 +125,35 @@ Keys: tags, authors, entries - you custom names, using form2m relations
 
 ### Syntax:
 
-```
-# Data will be getting from "publushed_from" value and put to "published_to" field
-published_to:
-    from: published_from
-# Same:
-published_to: published_from
-```
-### Walking:
+Data will be getting from "publushed_from" value and put to "published_to" field
 
 ```
-author: author.information.public.name. # Value will be getting from {'author':{'information':{'public':{'name':'Jimmy'}}}}
+published_to:
+    from: published_from
+```
+
+Same
+ 
+```
+published_to: published_from
+```
+
+### Walking:
+
+Value will be getting from {'author':{'information':{'public':{'name':'Jimmy'}}}}
+
+```
+author: author.information.public.name.
 ```
 
 ### Tuners:
 
+Value will be converted to python datetime object before saving
 ```
   published:
     from: published
     tuners:
       - datetime: "%a, %d %b %Y %H:%M:%S %Z"
-
-    #Value will be converted to python datetime object before saving
 ```
 
 
