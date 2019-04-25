@@ -10,7 +10,6 @@ sources:
     url: https://habr.com/rss/hubs/all/
 ```
 
-
 ### class: annihilation.sources.rss.Rss
 Feedparser library
 
@@ -26,7 +25,7 @@ sources:
 ## annihilation.destinations.to_django.CurrentEnvironment
 Write all to data to current django app models
 
-1. Put `annihilation.django_annihilation` to INSTALLED_APPS
+1. Put `django_annihilation` to INSTALLED_APPS
 
 2. Call ./manage.py annihilate YAML_CONFIG_PATH
 
