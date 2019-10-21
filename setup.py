@@ -18,7 +18,7 @@ setuptools.setup(name='annihilation',
                      'PyYAML==3.12',
                      'requests==2.19.1',
                      'simplejson==3.16.0',
-                     'urllib3==1.23',
+                     'urllib3==1.24.2',
                      'xmltodict==0.11.0',
                      'feedparser==5.2.1',
                      'funcsigs==1.0.2'
