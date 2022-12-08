@@ -10,7 +10,7 @@ setuptools.setup(name='annihilation',
                  packages=setuptools.find_packages(),
                  include_package_data=True,
                  install_requires=[
-                     'certifi==2018.4.16',
+                     'certifi==2022.12.7',
                      'chardet==3.0.4',
                      'idna==2.7',
                      'oyaml==0.5',
